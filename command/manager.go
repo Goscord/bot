@@ -15,6 +15,7 @@ func Init() *Manager {
 	mgr := &Manager{Commands: make(map[string]Command)}
 
 	mgr.Register(&HelpCommand{})
+	mgr.Register(&AvatarCommand{})
 
 	return mgr
 }
