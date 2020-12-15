@@ -1,0 +1,37 @@
+package command
+
+import (
+	"fmt"
+	"github.com/Goscord/goscord/discord/embed"
+)
+
+type HelpCommand struct {}
+
+func (c *HelpCommand) GetName() string {
+	return "help"
+}
+
+func (c *HelpCommand) GetDescription() string {
+	return "Retourne la page d'aide!"
+}
+
+func (c *HelpCommand) GetCategory() string {
+	return "general"
+}
+
+func (c *HelpCommand) Execute(ctx *Context) bool {
+	e := embed.NewEmbedBuilder()
+
+	e.SetTitle(":books: | Page d'aide")
+
+	for _, cmd := range ctx.cmdMgr.Commands {
+		e.AddField(fmt.Sprintf("%s%s", ctx.config.Prefix, cmd.GetName()), cmd.GetDescription(), false)
+	}
+
+	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
+	e.SetColor(embed.Blurple)
+
+	_, _ = ctx.client.Channel.Send(ctx.message.ChannelId, e.Embed())
+
+	return true
+}
