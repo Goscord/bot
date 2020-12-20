@@ -16,6 +16,7 @@ func Init() *Manager {
 
 	mgr.Register(&HelpCommand{})
 	mgr.Register(&AvatarCommand{})
+	mgr.Register(&PingCommand{})
 
 	return mgr
 }
