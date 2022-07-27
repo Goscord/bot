@@ -20,7 +20,7 @@ func main() {
 	CmdMgr = command.Init()
 
 	_ = Client.On("ready", event.OnReady(Client, Config))
-	_ = Client.On("message", CmdMgr.Handler(Client, Config))
+	_ = Client.On("messageCreate", CmdMgr.Handler(Client, Config))
 
 	if err := Client.Login(); err != nil {
 		panic(err)
