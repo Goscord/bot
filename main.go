@@ -16,7 +16,7 @@ var (
 
 func main() {
 	Config, _ = config.GetConfig()
-	Client = goscord.New(&gateway.Options{Token: Config.Token})
+	Client = goscord.New(&gateway.Options{Token: Config.Token, Intents: 32771})
 	CmdMgr = command.Init()
 
 	_ = Client.On("ready", event.OnReady(Client, Config))
