@@ -7,8 +7,10 @@ import (
 )
 
 type Config struct {
-	Token string `json:"token"`
-	Prefix string `json:"prefix"`
+	Token            string `json:"token"`
+	Prefix           string `json:"prefix"`
+	WelcomeChannelId string `json:"welcome_channel_id"`
+	MemberRoleId     string `json:"member_role_id"`
 }
 
 func GetConfig() (*Config, error) {
@@ -17,10 +19,17 @@ func GetConfig() (*Config, error) {
 
 		config.Token = ""
 		config.Prefix = "!"
+		config.WelcomeChannelId = ""
+		config.MemberRoleId = ""
 
-		bytes, _ := json.Marshal(config)
+		bytes, err := json.MarshalIndent(config, "", "    ")
+		if err != nil {
+			return nil, err
+		}
 
-		if err = ioutil.WriteFile("config.json", bytes, 0777); err != nil {
+		// write json to file
+		err = ioutil.WriteFile("config.json", bytes, 0644)
+		if err != nil {
 			return nil, err
 		}
 	}

@@ -16,15 +16,16 @@ var (
 
 func main() {
 	Config, _ = config.GetConfig()
-	Client = goscord.New(&gateway.Options{Token: Config.Token})
+	Client = goscord.New(&gateway.Options{Token: Config.Token, Intents: gateway.IntentGuildMessages + gateway.IntentGuildMembers})
 	CmdMgr = command.Init()
 
 	_ = Client.On("ready", event.OnReady(Client, Config))
 	_ = Client.On("messageCreate", CmdMgr.Handler(Client, Config))
+	_ = Client.On("guildMemberAdd", event.OnGuildMemberAdd(Client, Config))
 
 	if err := Client.Login(); err != nil {
 		panic(err)
 	}
 
-	select{}
+	select {}
 }
