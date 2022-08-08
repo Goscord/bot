@@ -1,10 +1,11 @@
 package command
 
 import (
+	"strings"
+
 	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/gateway"
-	"strings"
 )
 
 type Manager struct {
@@ -14,9 +15,9 @@ type Manager struct {
 func Init() *Manager {
 	mgr := &Manager{Commands: make(map[string]Command)}
 
-	mgr.Register(&HelpCommand{})
-	mgr.Register(&AvatarCommand{})
-	mgr.Register(&PingCommand{})
+	mgr.Register(new(HelpCommand))
+	mgr.Register(new(AvatarCommand))
+	mgr.Register(new(PingCommand))
 
 	return mgr
 }
@@ -28,16 +29,6 @@ func (mgr *Manager) Handler(client *gateway.Session, config *config.Config) func
 		}
 
 		if message.Author.Bot {
-			return
-		}
-
-		channel, err := client.State().Channel(message.ChannelId)
-
-		if err != nil {
-			return
-		}
-
-		if channel.Type == 1 {
 			return
 		}
 
@@ -54,7 +45,6 @@ func (mgr *Manager) Handler(client *gateway.Session, config *config.Config) func
 
 func (mgr *Manager) Get(name string) Command {
 	cmd, _ := mgr.Commands[name]
-
 	return cmd
 }
 

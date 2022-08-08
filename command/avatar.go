@@ -4,7 +4,7 @@ import (
 	"github.com/Goscord/goscord/discord/embed"
 )
 
-type AvatarCommand struct {}
+type AvatarCommand struct{}
 
 func (c *AvatarCommand) GetName() string {
 	return "avatar"

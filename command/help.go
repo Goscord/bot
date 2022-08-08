@@ -2,10 +2,11 @@ package command
 
 import (
 	"fmt"
+
 	"github.com/Goscord/goscord/discord/embed"
 )
 
-type HelpCommand struct {}
+type HelpCommand struct{}
 
 func (c *HelpCommand) GetName() string {
 	return "help"

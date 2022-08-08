@@ -15,12 +15,9 @@ type Config struct {
 
 func GetConfig() (*Config, error) {
 	if _, err := os.Stat("config.json"); os.IsNotExist(err) {
-		config := &Config{}
+		config := new(Config)
 
-		config.Token = ""
 		config.Prefix = "!"
-		config.WelcomeChannelId = ""
-		config.MemberRoleId = ""
 
 		bytes, err := json.MarshalIndent(config, "", "    ")
 		if err != nil {
@@ -40,7 +37,7 @@ func GetConfig() (*Config, error) {
 		return nil, err
 	}
 
-	config := &Config{}
+	config := new(Config)
 
 	_ = json.Unmarshal(data, config)
 
