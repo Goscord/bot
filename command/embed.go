@@ -48,6 +48,7 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 		}
 	}
 
+	// ToDo : Check if the channel is a news channel
 	if m, err := ctx.client.Channel.Send(ctx.message.ChannelId, e); err == nil {
 		ctx.client.Channel.CrosspostMessage(ctx.message.ChannelId, m.Id) // Crosspost the message to the news channels
 	}
