@@ -23,7 +23,7 @@ func (c *AvatarCommand) Execute(ctx *Context) bool {
 
 	e.SetImage(ctx.message.Author.AvatarURL())
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
-	e.SetColor(embed.Blurple)
+	e.SetColor(embed.Green)
 
 	_, _ = ctx.client.Channel.Send(ctx.message.ChannelId, e.Embed())
 

@@ -30,7 +30,7 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 	}
 
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
-	e.SetColor(embed.Blurple)
+	e.SetColor(embed.Green)
 
 	_, _ = ctx.client.Channel.Send(ctx.message.ChannelId, e.Embed())
 

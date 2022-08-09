@@ -33,7 +33,7 @@ func (c *PingCommand) Execute(ctx *Context) bool {
 	e.SetTitle("Pong!")
 	e.SetDescription(fmt.Sprintf("Bot : %d ms\nWebsocket : %d ms", latency.Milliseconds(), ctx.client.Latency().Milliseconds()))
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
-	e.SetColor(embed.Blurple)
+	e.SetColor(embed.Green)
 
 	_, _ = ctx.client.Channel.Edit(ctx.message.ChannelId, m.Id, e.Embed())
 
