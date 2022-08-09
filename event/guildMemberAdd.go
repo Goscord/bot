@@ -11,8 +11,11 @@ import (
 func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(*discord.GuildMember) {
 	return func(member *discord.GuildMember) {
 		if config.WelcomeChannelId != "" {
-			// ToDo : check if the channel is in the guild state
-			_, _ = client.Channel.Send(config.WelcomeChannelId, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
+			if channel, err := client.State().Channel(config.WelcomeChannelId); err == nil {
+				_, _ = client.Channel.Send(channel.Id, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
+			} else {
+				fmt.Println("Cannot find welcome channel")
+			}
 		}
 
 		if config.MemberRoleId != "" {
