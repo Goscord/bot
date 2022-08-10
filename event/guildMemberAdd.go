@@ -2,6 +2,7 @@ package event
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/goscord/discord"
@@ -14,14 +15,14 @@ func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(membe
 			if channel, bruh := client.State().Channel(config.WelcomeChannelId); bruh == nil {
 				client.Channel.SendMessage(channel.Id, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
 			} else {
-				fmt.Println("Cannot find channel with id :", config.WelcomeChannelId)
+				log.Println("Cannot find channel with id :", config.WelcomeChannelId)
 			}
 		}
 
 		if config.MemberRoleId != "" {
 			// ToDo : Check if the role is in the guild state
 
-			fmt.Printf("Adding role %s to user %s\n", config.MemberRoleId, member.User.Tag())
+			log.Printf("Adding role %s to user %s\n", config.MemberRoleId, member.User.Tag())
 
 			client.Guild.AddMemberRole(member.GuildId, member.User.Id, config.MemberRoleId)
 		}
