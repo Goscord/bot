@@ -13,6 +13,6 @@ func OnReady(client *gateway.Session, config *config.Config) func() {
 		fmt.Println("Logged in as " + client.Me().Tag())
 
 		_ = client.SetActivity(&discord.Activity{Name: fmt.Sprintf("%shelp", config.Prefix), Type: discord.ActivityListening})
-		_ = client.SetStatus(discord.StatusTypeOnline)
+		_ = client.SetStatus(discord.StatusTypeDoNotDisturb)
 	}
 }

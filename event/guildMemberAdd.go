@@ -14,12 +14,12 @@ func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(membe
 			if channel, bruh := client.State().Channel(config.WelcomeChannelId); bruh == nil {
 				client.Channel.SendMessage(channel.Id, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
 			} else {
-				fmt.Println("Cannot find welcome channel")
+				fmt.Println("Cannot find channel with id :", config.WelcomeChannelId)
 			}
 		}
 
 		if config.MemberRoleId != "" {
-			// ToDo : check if the role is in the guild state
+			// ToDo : Check if the role is in the guild state
 
 			fmt.Printf("Adding role %s to user %s\n", config.MemberRoleId, member.User.Tag())
 

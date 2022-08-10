@@ -20,7 +20,7 @@ func main() {
 
 	Client = goscord.New(&gateway.Options{
 		Token:   Config.Token,
-		Intents: gateway.IntentGuildMessages + gateway.IntentGuildMembers,
+		Intents: gateway.IntentGuilds + gateway.IntentGuildMessages + gateway.IntentGuildMembers,
 	})
 
 	_ = Client.On("ready", event.OnReady(Client, Config))
