@@ -25,8 +25,8 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 	// Check permission :
 	// HACK/TODO : wait the permission on Goscord
 	authorIds := []string{
-		"233351173665456129", // Bluzzizi
-		"810596177857871913", // szerki
+		"233351173665456129", // Bluzzi
+		"810596177857871913", // szeroki
 	}
 
 	e := embed.NewEmbedBuilder()
@@ -49,7 +49,7 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 	}
 
 	// ToDo : Check if the channel is a news channel
-	if m, err := ctx.client.Channel.Send(ctx.message.ChannelId, e); err == nil {
+	if m, err := ctx.client.Channel.SendMessage(ctx.message.ChannelId, e); err == nil {
 		ctx.client.Channel.CrosspostMessage(ctx.message.ChannelId, m.Id) // Crosspost the message to the news channels
 	}
 

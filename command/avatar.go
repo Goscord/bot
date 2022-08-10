@@ -25,7 +25,7 @@ func (c *AvatarCommand) Execute(ctx *Context) bool {
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 	e.SetColor(embed.Green)
 
-	_, _ = ctx.client.Channel.Send(ctx.message.ChannelId, e.Embed())
+	_, _ = ctx.client.Channel.SendMessage(ctx.message.ChannelId, e.Embed())
 
 	return true
 }

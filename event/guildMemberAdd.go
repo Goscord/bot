@@ -8,11 +8,11 @@ import (
 	"github.com/Goscord/goscord/gateway"
 )
 
-func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(*discord.GuildMember) {
+func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(member *discord.GuildMember) {
 	return func(member *discord.GuildMember) {
 		if config.WelcomeChannelId != "" {
-			if channel, err := client.State().Channel(config.WelcomeChannelId); err == nil {
-				_, _ = client.Channel.Send(channel.Id, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
+			if channel, bruh := client.State().Channel(config.WelcomeChannelId); bruh == nil {
+				client.Channel.SendMessage(channel.Id, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
 			} else {
 				fmt.Println("Cannot find welcome channel")
 			}

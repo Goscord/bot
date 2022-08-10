@@ -21,7 +21,7 @@ func (c *PingCommand) GetCategory() string {
 }
 
 func (c *PingCommand) Execute(ctx *Context) bool {
-	m, err := ctx.client.Channel.Send(ctx.message.ChannelId, "Pinging...")
+	m, err := ctx.client.Channel.SendMessage(ctx.message.ChannelId, "Pinging...")
 
 	if err != nil {
 		return true
