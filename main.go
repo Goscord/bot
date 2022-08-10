@@ -1,6 +1,10 @@
 package main
 
 import (
+	"context"
+	"os"
+	"os/signal"
+
 	"github.com/Goscord/Bot/command"
 	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/Bot/event"
@@ -27,9 +31,14 @@ func main() {
 	_ = Client.On("messageCreate", CmdMgr.Handler(Client, Config))
 	_ = Client.On("guildMemberAdd", event.OnGuildMemberAdd(Client, Config))
 
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer cancel()
+
 	if err := Client.Login(); err != nil {
 		panic(err)
 	}
 
-	select {}
+	<-ctx.Done() // block until Ctrl+C
+
+	Client.Close()
 }
