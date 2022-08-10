@@ -6,21 +6,21 @@ import (
 	"github.com/Goscord/goscord/discord/embed"
 )
 
-type InfoCommand struct{}
+type ServerinfoCommand struct{}
 
-func (c *InfoCommand) GetName() string {
-	return "info"
+func (c *ServerinfoCommand) GetName() string {
+	return "serverinfo"
 }
 
-func (c *InfoCommand) GetDescription() string {
+func (c *ServerinfoCommand) GetDescription() string {
 	return "Display some infos about the server!"
 }
 
-func (c *InfoCommand) GetCategory() string {
+func (c *ServerinfoCommand) GetCategory() string {
 	return "general"
 }
 
-func (c *InfoCommand) Execute(ctx *Context) bool {
+func (c *ServerinfoCommand) Execute(ctx *Context) bool {
 	e := embed.NewEmbedBuilder()
 
 	guild, err := ctx.client.State().Guild(ctx.message.GuildId)
