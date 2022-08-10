@@ -19,6 +19,7 @@ func Init() *Manager {
 	mgr.Register(new(AvatarCommand))
 	mgr.Register(new(PingCommand))
 	mgr.Register(new(EmbedCommand))
+	mgr.Register(new(InfoCommand))
 
 	return mgr
 }
