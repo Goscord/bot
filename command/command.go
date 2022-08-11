@@ -15,8 +15,9 @@ type Context struct {
 }
 
 type Command interface {
-	GetName() string
-	GetDescription() string
-	GetCategory() string
+	Name() string
+	Description() string
+	Category() string
+	Options() []*discord.ApplicationCommandOption
 	Execute(ctx *Context) bool
 }

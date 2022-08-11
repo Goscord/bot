@@ -9,11 +9,15 @@ import (
 )
 
 type Manager struct {
+	client   *gateway.Session
 	Commands map[string]Command
 }
 
-func Init() *Manager {
-	mgr := &Manager{Commands: make(map[string]Command)}
+func Init(client *gateway.Session) *Manager {
+	mgr := &Manager{
+		client:   client,
+		Commands: make(map[string]Command),
+	}
 
 	mgr.Register(new(HelpCommand))
 	mgr.Register(new(AvatarCommand))
@@ -46,10 +50,20 @@ func (mgr *Manager) Handler(client *gateway.Session, config *config.Config) func
 }
 
 func (mgr *Manager) Get(name string) Command {
-	cmd, _ := mgr.Commands[name]
-	return cmd
+	return mgr.Commands[name]
 }
 
 func (mgr *Manager) Register(cmd Command) {
-	mgr.Commands[cmd.GetName()] = cmd
+	appCmd := &discord.ApplicationCommand{
+		Name:        cmd.Name(),
+		Type:        discord.ApplicationCommandChat,
+		Description: cmd.Description(),
+		Options:     cmd.Options(),
+	}
+
+	mgr.client.Interaction.RegisterCommand(mgr.client.Me().Id, "", appCmd)
+
+	mgr.Commands[cmd.Name()] = cmd
 }
+
+// ToDo : Unregister commands

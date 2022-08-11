@@ -16,6 +16,10 @@ github.com/Goscord/goscord v0.0.0-20220810121030-4492426797fe h1:dVC0u9c8m5X9uW1
 github.com/Goscord/goscord v0.0.0-20220810121030-4492426797fe/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
 github.com/Goscord/goscord v0.0.0-20220810141944-047559445f8c h1:9TbuYDa+fZL2YS+OqE4eWzlDK3wxqJvUFeCc+817uEM=
 github.com/Goscord/goscord v0.0.0-20220810141944-047559445f8c/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
+github.com/Goscord/goscord v0.0.0-20220810145130-f1f46910d46c h1:yxW5j/FIAC4F6UFCAGjsXQdrx1YZs0Na8CwArqiG6Z4=
+github.com/Goscord/goscord v0.0.0-20220810145130-f1f46910d46c/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
+github.com/Goscord/goscord v0.0.0-20220810235243-ef334ccdea1e h1:LH6leo9YtxW2qQ2VD+htIlZ4WDruQFYiwiMe6ROLNDM=
+github.com/Goscord/goscord v0.0.0-20220810235243-ef334ccdea1e/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef h1:2JGTg6JapxP9/R33ZaagQtAM4EkkSYnIAlOG5EI8gkM=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef/go.mod h1:JS7hed4L1fj0hXcyEejnW57/7LCetXggd+vwrRnYeII=
 github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=

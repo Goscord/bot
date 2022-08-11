@@ -16,11 +16,14 @@ var (
 
 func main() {
 	Config, _ = config.GetConfig()
-	CmdMgr = command.Init()
-
 	Client = goscord.New(&gateway.Options{
 		Token:   Config.Token,
 		Intents: gateway.IntentGuilds + gateway.IntentGuildMessages + gateway.IntentGuildMembers,
+	})
+
+	// hardcoded for now
+	_ = Client.On("ready", func() {
+		CmdMgr = command.Init(Client)
 	})
 
 	_ = Client.On("ready", event.OnReady(Client, Config))

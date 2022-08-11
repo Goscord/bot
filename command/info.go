@@ -3,21 +3,26 @@ package command
 import (
 	"fmt"
 
+	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/discord/embed"
 )
 
 type ServerinfoCommand struct{}
 
-func (c *ServerinfoCommand) GetName() string {
+func (c *ServerinfoCommand) Name() string {
 	return "serverinfo"
 }
 
-func (c *ServerinfoCommand) GetDescription() string {
+func (c *ServerinfoCommand) Description() string {
 	return "Display some infos about the server!"
 }
 
-func (c *ServerinfoCommand) GetCategory() string {
+func (c *ServerinfoCommand) Category() string {
 	return "general"
+}
+
+func (c *ServerinfoCommand) Options() []*discord.ApplicationCommandOption {
+	return make([]*discord.ApplicationCommandOption, 0)
 }
 
 func (c *ServerinfoCommand) Execute(ctx *Context) bool {

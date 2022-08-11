@@ -11,16 +11,33 @@ import (
 
 type EmbedCommand struct{}
 
-func (c *EmbedCommand) GetName() string {
+func (c *EmbedCommand) Name() string {
 	return "embed"
 }
 
-func (c *EmbedCommand) GetDescription() string {
+func (c *EmbedCommand) Description() string {
 	return "Send a embed with your message"
 }
 
-func (c *EmbedCommand) GetCategory() string {
+func (c *EmbedCommand) Category() string {
 	return "general"
+}
+
+func (c *EmbedCommand) Options() []*discord.ApplicationCommandOption {
+	return []*discord.ApplicationCommandOption{
+		{
+			Name:        "title",
+			Type:        discord.ApplicationCommandOptionString,
+			Description: "Title of the embed",
+			Required:    true,
+		},
+		{
+			Name:        "description",
+			Type:        discord.ApplicationCommandOptionString,
+			Description: "Description of the embed",
+			Required:    true,
+		},
+	}
 }
 
 func (c *EmbedCommand) Execute(ctx *Context) bool {

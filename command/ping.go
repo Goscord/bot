@@ -3,21 +3,26 @@ package command
 import (
 	"fmt"
 
+	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/discord/embed"
 )
 
 type PingCommand struct{}
 
-func (c *PingCommand) GetName() string {
+func (c *PingCommand) Name() string {
 	return "ping"
 }
 
-func (c *PingCommand) GetDescription() string {
+func (c *PingCommand) Description() string {
 	return "Get the bot latency!"
 }
 
-func (c *PingCommand) GetCategory() string {
+func (c *PingCommand) Category() string {
 	return "general"
+}
+
+func (c *PingCommand) Options() []*discord.ApplicationCommandOption {
+	return make([]*discord.ApplicationCommandOption, 0)
 }
 
 func (c *PingCommand) Execute(ctx *Context) bool {
