@@ -50,7 +50,11 @@ func (mgr *Manager) Handler(client *gateway.Session, config *config.Config) func
 }
 
 func (mgr *Manager) Get(name string) Command {
-	return mgr.Commands[name]
+	if cmd, ok := mgr.Commands[name]; ok {
+		return cmd
+	}
+
+	return nil
 }
 
 func (mgr *Manager) Register(cmd Command) {
