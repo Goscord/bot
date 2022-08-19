@@ -1,9 +1,6 @@
 package command
 
 import (
-	"log"
-	"strings"
-
 	"github.com/Goscord/Bot/utils"
 	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/discord/embed"
@@ -50,33 +47,18 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 
 	e := embed.NewEmbedBuilder()
 
-	if !utils.ArrayContains(authorIds, ctx.message.Author.Id) {
+	if !utils.ArrayContains(authorIds, ctx.interaction.Member.User.Id) {
 		e.SetDescription("You do not have permission to run this command")
 		e.SetColor(embed.Red)
 	} else {
-		if len(ctx.args) > 1 {
-			if ctx.args[0] != "nil" {
-				e.SetTitle(ctx.args[0])
-			}
+		title := ctx.interaction.Data.Options[0].String()
+		description := ctx.interaction.Data.Options[1].String()
 
-			e.SetDescription(strings.Join(ctx.args[1:], " "))
-			e.SetColor(embed.Green)
-		} else {
-			e.SetDescription("You must do /embed <title | nil> <content>")
-			e.SetColor(embed.Red)
-		}
-	}
+		e.SetTitle(title)
+		e.SetDescription(description)
+		e.SetColor(embed.Green)
 
-	if m, err := ctx.client.Channel.SendMessage(ctx.message.ChannelId, e); err == nil {
-		channel, err := ctx.client.State().Channel(ctx.message.ChannelId)
-
-		if err != nil {
-			log.Println("Cannot find channel")
-		}
-
-		if channel.Type == discord.ChannelTypeNews {
-			ctx.client.Channel.CrosspostMessage(ctx.message.ChannelId, m.Id) // Crosspost the message to the news channels
-		}
+		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
 	}
 
 	return true

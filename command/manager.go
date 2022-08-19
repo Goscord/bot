@@ -1,55 +1,50 @@
 package command
 
 import (
-	"strings"
+	"fmt"
 
 	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/gateway"
 )
 
-type Manager struct {
+type CommandManager struct {
 	client   *gateway.Session
 	Commands map[string]Command
 }
 
-func Init(client *gateway.Session) *Manager {
-	mgr := &Manager{
+func NewCommandManager(client *gateway.Session) *CommandManager {
+	return &CommandManager{
 		client:   client,
 		Commands: make(map[string]Command),
 	}
+}
+
+func (mgr *CommandManager) Init() {
 
 	mgr.Register(new(HelpCommand))
 	mgr.Register(new(AvatarCommand))
 	mgr.Register(new(PingCommand))
 	mgr.Register(new(EmbedCommand))
 	mgr.Register(new(ServerinfoCommand))
-
-	return mgr
 }
 
-func (mgr *Manager) Handler(client *gateway.Session, config *config.Config) func(*discord.Message) {
-	return func(message *discord.Message) {
-		if !strings.HasPrefix(strings.ToLower(message.Content), config.Prefix) {
+func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Config) func(*discord.Interaction) {
+	return func(interaction *discord.Interaction) {
+		if interaction.Member.User.Bot {
 			return
 		}
 
-		if message.Author.Bot {
-			return
-		}
-
-		messageArray := strings.Split(message.Content, " ")
-		cmdName := messageArray[0][len(config.Prefix):]
-		args := messageArray[1:]
-		cmd := mgr.Get(cmdName)
+		cmd := mgr.Get(interaction.Data.Name)
 
 		if cmd != nil {
-			_ = cmd.Execute(&Context{config: config, client: client, args: args, message: message, cmdMgr: mgr})
+			_ = cmd.Execute(&Context{config: config, client: client, interaction: interaction, cmdMgr: mgr})
 		}
 	}
 }
 
-func (mgr *Manager) Get(name string) Command {
+func (mgr *CommandManager) Get(name string) Command {
+	fmt.Println(name)
 	if cmd, ok := mgr.Commands[name]; ok {
 		return cmd
 	}
@@ -57,7 +52,7 @@ func (mgr *Manager) Get(name string) Command {
 	return nil
 }
 
-func (mgr *Manager) Register(cmd Command) {
+func (mgr *CommandManager) Register(cmd Command) {
 	appCmd := &discord.ApplicationCommand{
 		Name:        cmd.Name(),
 		Type:        discord.ApplicationCommandChat,

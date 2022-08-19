@@ -11,7 +11,7 @@ import (
 var (
 	Client *gateway.Session
 	Config *config.Config
-	CmdMgr *command.Manager
+	CmdMgr *command.CommandManager
 )
 
 func main() {
@@ -20,14 +20,10 @@ func main() {
 		Token:   Config.Token,
 		Intents: gateway.IntentGuilds + gateway.IntentGuildMessages + gateway.IntentGuildMembers,
 	})
+	CmdMgr = command.NewCommandManager(Client)
 
-	// hardcoded for now
-	_ = Client.On("ready", func() {
-		CmdMgr = command.Init(Client)
-	})
-
-	_ = Client.On("ready", event.OnReady(Client, Config))
-	_ = Client.On("messageCreate", CmdMgr.Handler(Client, Config))
+	_ = Client.On("ready", event.OnReady(Client, Config, CmdMgr))
+	_ = Client.On("interactionCreate", CmdMgr.Handler(Client, Config))
 	_ = Client.On("guildMemberAdd", event.OnGuildMemberAdd(Client, Config))
 
 	if err := Client.Login(); err != nil {

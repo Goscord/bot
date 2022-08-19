@@ -37,7 +37,7 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 	e.SetColor(embed.Green)
 
-	ctx.client.Channel.SendMessage(ctx.message.ChannelId, e.Embed())
+	ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
 
 	return true
 }

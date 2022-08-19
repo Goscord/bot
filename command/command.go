@@ -7,11 +7,10 @@ import (
 )
 
 type Context struct {
-	config  *config.Config
-	cmdMgr  *Manager
-	client  *gateway.Session
-	message *discord.Message
-	args    []string
+	config      *config.Config
+	cmdMgr      *CommandManager
+	client      *gateway.Session
+	interaction *discord.Interaction
 }
 
 type Command interface {
