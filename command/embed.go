@@ -1,7 +1,6 @@
 package command
 
 import (
-	"github.com/Goscord/Bot/utils"
 	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/discord/embed"
 )
@@ -40,14 +39,11 @@ func (c *EmbedCommand) Options() []*discord.ApplicationCommandOption {
 func (c *EmbedCommand) Execute(ctx *Context) bool {
 	// Check permission :
 	// HACK/TODO : wait the permission on Goscord
-	authorIds := []string{
-		"233351173665456129", // Bluzzi
-		"810596177857871913", // szeroki
-	}
 
 	e := embed.NewEmbedBuilder()
+	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 
-	if !utils.ArrayContains(authorIds, ctx.interaction.Member.User.Id) {
+	if !ctx.interaction.Member.Permissions.Has(discord.BitwisePermissionFlagManageMessages) {
 		e.SetDescription("You do not have permission to run this command")
 		e.SetColor(embed.Red)
 	} else {
@@ -57,9 +53,9 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 		e.SetTitle(title)
 		e.SetDescription(description)
 		e.SetColor(embed.Green)
-
-		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
 	}
+
+	ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
 
 	return true
 }
