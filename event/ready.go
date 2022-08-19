@@ -1,7 +1,6 @@
 package event
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/Goscord/Bot/command"
@@ -16,7 +15,7 @@ func OnReady(client *gateway.Session, config *config.Config, cmdMgr *command.Com
 
 		cmdMgr.Init()
 
-		_ = client.SetActivity(&discord.Activity{Name: fmt.Sprintf("%shelp", config.Prefix), Type: discord.ActivityListening})
+		_ = client.SetActivity(&discord.Activity{Name: "/help", Type: discord.ActivityListening})
 		_ = client.SetStatus(discord.StatusTypeDoNotDisturb)
 	}
 }

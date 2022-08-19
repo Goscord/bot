@@ -8,7 +8,6 @@ import (
 
 type Config struct {
 	Token            string `json:"token"`
-	Prefix           string `json:"prefix"`
 	WelcomeChannelId string `json:"welcome_channel_id"`
 	MemberRoleId     string `json:"member_role_id"`
 }
@@ -16,8 +15,6 @@ type Config struct {
 func GetConfig() (*Config, error) {
 	if _, err := os.Stat("config.json"); os.IsNotExist(err) {
 		config := new(Config)
-
-		config.Prefix = "!"
 
 		bytes, err := json.MarshalIndent(config, "", "    ")
 		if err != nil {
