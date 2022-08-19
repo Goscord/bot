@@ -46,6 +46,8 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 	if !ctx.interaction.Member.Permissions.Has(discord.BitwisePermissionFlagManageMessages) {
 		e.SetDescription("You do not have permission to run this command")
 		e.SetColor(embed.Red)
+
+		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
 	} else {
 		title := ctx.interaction.Data.Options[0].String()
 		description := ctx.interaction.Data.Options[1].String()
@@ -53,9 +55,9 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 		e.SetTitle(title)
 		e.SetDescription(description)
 		e.SetColor(embed.Green)
-	}
 
-	ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
+		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
+	}
 
 	return true
 }
