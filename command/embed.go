@@ -37,9 +37,6 @@ func (c *EmbedCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *EmbedCommand) Execute(ctx *Context) bool {
-	// Check permission :
-	// HACK/TODO : wait the permission on Goscord
-
 	e := embed.NewEmbedBuilder()
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 
