@@ -31,7 +31,7 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 	e.SetTitle(":books: | Help page")
 
 	for _, cmd := range ctx.cmdMgr.Commands {
-		e.AddField(fmt.Sprintf("%s%s", ctx.config.Prefix, cmd.Name()), cmd.Description(), false)
+		e.AddField(fmt.Sprintf("/%s", cmd.Name()), cmd.Description(), false)
 	}
 
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
