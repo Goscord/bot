@@ -1,8 +1,6 @@
 package command
 
 import (
-	"fmt"
-
 	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/gateway"
@@ -44,7 +42,6 @@ func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Confi
 }
 
 func (mgr *CommandManager) Get(name string) Command {
-	fmt.Println(name)
 	if cmd, ok := mgr.Commands[name]; ok {
 		return cmd
 	}
