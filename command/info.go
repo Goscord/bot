@@ -31,7 +31,8 @@ func (c *ServerinfoCommand) Execute(ctx *Context) bool {
 	guild, err := ctx.client.State().Guild(ctx.interaction.GuildId)
 	if err != nil {
 		e.SetDescription("Could not fetch server informations!")
-		ctx.client.Channel.SendMessage(ctx.interaction.ChannelId, e)
+
+		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
 
 		return false
 	}

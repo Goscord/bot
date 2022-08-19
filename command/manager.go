@@ -19,7 +19,6 @@ func NewCommandManager(client *gateway.Session) *CommandManager {
 }
 
 func (mgr *CommandManager) Init() {
-
 	mgr.Register(new(HelpCommand))
 	mgr.Register(new(AvatarCommand))
 	mgr.Register(new(PingCommand))

@@ -1,6 +1,8 @@
 package command
 
 import (
+	"fmt"
+
 	"github.com/Goscord/goscord/discord"
 )
 
@@ -23,25 +25,7 @@ func (c *PingCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *PingCommand) Execute(ctx *Context) bool {
-	/*
-		m, err := ctx.client.Channel.SendMessage(ctx.interaction.ChannelId, "Pinging...")
-
-		if err != nil {
-			return true
-		}
-
-		latency := m.Timestamp.Sub(ctx.interaction.Message.Timestamp)
-		e := embed.NewEmbedBuilder()
-
-		e.SetTitle("Pong!")
-		e.SetDescription(fmt.Sprintf("Bot : %d ms\nWebsocket : %d ms", latency.Milliseconds(), ctx.client.Latency().Milliseconds()))
-		e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
-		e.SetColor(embed.Green)
-
-		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
-	*/
-
-	ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Content: "Pong!", Flags: discord.MessageFlagEphemeral})
+	ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Content: fmt.Sprintf("Pong! 🏓 (%dms)", ctx.client.Latency().Milliseconds()), Flags: discord.MessageFlagEphemeral})
 
 	return true
 }
