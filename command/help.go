@@ -30,7 +30,7 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 
 	e.SetTitle(":books: | Help page")
 
-	for _, cmd := range ctx.cmdMgr.Commands {
+	for _, cmd := range ctx.cmdMgr.commands {
 		e.AddField(fmt.Sprintf("/%s", cmd.Name()), cmd.Description(), false)
 	}
 

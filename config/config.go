@@ -8,6 +8,7 @@ import (
 
 type Config struct {
 	Token            string `json:"token"`
+	GuildId          string `json:"guild_id"`
 	WelcomeChannelId string `json:"welcome_channel_id"`
 	MemberRoleId     string `json:"member_role_id"`
 }

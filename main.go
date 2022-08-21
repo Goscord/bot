@@ -9,24 +9,24 @@ import (
 )
 
 var (
-	Client *gateway.Session
+	client *gateway.Session
 	Config *config.Config
-	CmdMgr *command.CommandManager
+	cmdMgr *command.CommandManager
 )
 
 func main() {
 	Config, _ = config.GetConfig()
-	Client = goscord.New(&gateway.Options{
+	client = goscord.New(&gateway.Options{
 		Token:   Config.Token,
 		Intents: gateway.IntentGuilds + gateway.IntentGuildMessages + gateway.IntentGuildMembers,
 	})
-	CmdMgr = command.NewCommandManager(Client)
+	cmdMgr = command.NewCommandManager(client, Config)
 
-	_ = Client.On("ready", event.OnReady(Client, Config, CmdMgr))
-	_ = Client.On("interactionCreate", CmdMgr.Handler(Client, Config))
-	_ = Client.On("guildMemberAdd", event.OnGuildMemberAdd(Client, Config))
+	_ = client.On("ready", event.OnReady(client, Config, cmdMgr))
+	_ = client.On("interactionCreate", cmdMgr.Handler(client, Config))
+	_ = client.On("guildMemberAdd", event.OnGuildMemberAdd(client, Config))
 
-	if err := Client.Login(); err != nil {
+	if err := client.Login(); err != nil {
 		panic(err)
 	}
 
