@@ -8,13 +8,15 @@ import (
 
 type CommandManager struct {
 	client   *gateway.Session
-	Commands map[string]Command
+	config   *config.Config
+	commands map[string]Command
 }
 
-func NewCommandManager(client *gateway.Session) *CommandManager {
+func NewCommandManager(client *gateway.Session, config *config.Config) *CommandManager {
 	return &CommandManager{
 		client:   client,
-		Commands: make(map[string]Command),
+		config:   config,
+		commands: make(map[string]Command),
 	}
 }
 
@@ -28,6 +30,10 @@ func (mgr *CommandManager) Init() {
 
 func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Config) func(*discord.Interaction) {
 	return func(interaction *discord.Interaction) {
+		if interaction.Member == nil {
+			return
+		}
+
 		if interaction.Member.User.Bot {
 			return
 		}
@@ -41,7 +47,7 @@ func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Confi
 }
 
 func (mgr *CommandManager) Get(name string) Command {
-	if cmd, ok := mgr.Commands[name]; ok {
+	if cmd, ok := mgr.commands[name]; ok {
 		return cmd
 	}
 
@@ -56,9 +62,9 @@ func (mgr *CommandManager) Register(cmd Command) {
 		Options:     cmd.Options(),
 	}
 
-	mgr.client.Application.RegisterCommand(mgr.client.Me().Id, "", appCmd)
+	mgr.client.Application.RegisterCommand(mgr.client.Me().Id, mgr.config.GuildId, appCmd)
 
-	mgr.Commands[cmd.Name()] = cmd
+	mgr.commands[cmd.Name()] = cmd
 }
 
 // ToDo : Unregister commands
