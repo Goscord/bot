@@ -62,7 +62,7 @@ func (mgr *CommandManager) Register(cmd Command) {
 		Options:     cmd.Options(),
 	}
 
-	mgr.client.Application.RegisterCommand(mgr.client.Me().Id, mgr.config.GuildId, appCmd)
+	mgr.client.Application.RegisterCommand(mgr.client.Me().Id, "", appCmd)
 
 	mgr.commands[cmd.Name()] = cmd
 }
