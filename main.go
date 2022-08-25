@@ -18,7 +18,7 @@ func main() {
 	Config, _ = config.GetConfig()
 	client = goscord.New(&gateway.Options{
 		Token:   Config.Token,
-		Intents: gateway.IntentGuilds + gateway.IntentGuildMessages + gateway.IntentGuildMembers,
+		Intents: gateway.IntentGuilds | gateway.IntentGuildMessages | gateway.IntentGuildMembers,
 	})
 	cmdMgr = command.NewCommandManager(client, Config)
 
