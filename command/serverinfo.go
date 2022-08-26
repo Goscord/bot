@@ -26,7 +26,6 @@ func (c *ServerInfoCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *ServerInfoCommand) Execute(ctx *Context) bool {
-	fmt.Println("called")
 	e := embed.NewEmbedBuilder()
 
 	guild, err := ctx.client.State().Guild(ctx.interaction.GuildId)
