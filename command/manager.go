@@ -25,7 +25,7 @@ func (mgr *CommandManager) Init() {
 	mgr.Register(new(AvatarCommand))
 	mgr.Register(new(PingCommand))
 	mgr.Register(new(EmbedCommand))
-	mgr.Register(new(ServerinfoCommand))
+	mgr.Register(new(ServerInfoCommand))
 }
 
 func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Config) func(*discord.Interaction) {

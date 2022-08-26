@@ -7,29 +7,31 @@ import (
 	"github.com/Goscord/goscord/discord/embed"
 )
 
-type ServerinfoCommand struct{}
+type ServerInfoCommand struct{}
 
-func (c *ServerinfoCommand) Name() string {
+func (c *ServerInfoCommand) Name() string {
 	return "serverinfo"
 }
 
-func (c *ServerinfoCommand) Description() string {
+func (c *ServerInfoCommand) Description() string {
 	return "Display some infos about the server!"
 }
 
-func (c *ServerinfoCommand) Category() string {
+func (c *ServerInfoCommand) Category() string {
 	return "general"
 }
 
-func (c *ServerinfoCommand) Options() []*discord.ApplicationCommandOption {
+func (c *ServerInfoCommand) Options() []*discord.ApplicationCommandOption {
 	return make([]*discord.ApplicationCommandOption, 0)
 }
 
-func (c *ServerinfoCommand) Execute(ctx *Context) bool {
+func (c *ServerInfoCommand) Execute(ctx *Context) bool {
+	fmt.Println("called")
 	e := embed.NewEmbedBuilder()
 
 	guild, err := ctx.client.State().Guild(ctx.interaction.GuildId)
 	if err != nil {
+		e.SetColor(embed.Red)
 		e.SetDescription("Could not fetch server informations!")
 
 		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
