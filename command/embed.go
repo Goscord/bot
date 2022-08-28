@@ -1,6 +1,8 @@
 package command
 
 import (
+	"strings"
+
 	"github.com/Goscord/goscord/discord"
 	"github.com/Goscord/goscord/discord/embed"
 )
@@ -38,7 +40,6 @@ func (c *EmbedCommand) Options() []*discord.ApplicationCommandOption {
 
 func (c *EmbedCommand) Execute(ctx *Context) bool {
 	e := embed.NewEmbedBuilder()
-	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 
 	if !ctx.interaction.Member.Permissions.Has(discord.BitwisePermissionFlagManageMessages) {
 		e.SetDescription("You do not have permission to run this command")
@@ -49,8 +50,7 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 		title := ctx.interaction.Data.Options[0].String()
 		description := ctx.interaction.Data.Options[1].String()
 
-		e.SetTitle(title)
-		e.SetDescription(description)
+		e.AddField(title, strings.ReplaceAll(description, "{line}", "\n"), false)
 		e.SetColor(embed.Green)
 
 		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
