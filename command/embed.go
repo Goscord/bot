@@ -32,7 +32,7 @@ func (c *EmbedCommand) Options() []*discord.ApplicationCommandOption {
 		{
 			Name:        "description",
 			Type:        discord.ApplicationCommandOptionString,
-			Description: "Description of the embed",
+			Description: "Description of the embed (use -br for break line)",
 			Required:    true,
 		},
 	}
@@ -50,7 +50,7 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 		title := ctx.interaction.Data.Options[0].String()
 		description := ctx.interaction.Data.Options[1].String()
 
-		e.AddField(title, strings.ReplaceAll(description, "{line}", "\n"), false)
+		e.AddField(title, strings.ReplaceAll(description, "-br", "\n"), false)
 		e.SetColor(embed.Green)
 
 		ctx.client.Interaction.CreateResponse(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
