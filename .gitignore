@@ -1,5 +1,3 @@
-config.json
-
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -15,3 +13,5 @@ config.json
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+.env
