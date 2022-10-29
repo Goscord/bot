@@ -1,6 +1,9 @@
 # Example bot 
 This is the example bot from Goscord. You can test it on [our Discord](https://goscord.dev/discord).
 
+## Environment variable
+You must create a `.env` file with the bot token variable (`BOT_TOKEN`).
+
 ## Start it
 ### Without Docker
 You must have version 1.18 of GoLang installed on your machine. [See how to install GoLang](https://go.dev/dl/).
