@@ -34,6 +34,8 @@ github.com/Goscord/goscord v0.0.0-20230108210506-a93407fe5c31 h1:u2T6nKLXKMOpLXX
 github.com/Goscord/goscord v0.0.0-20230108210506-a93407fe5c31/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
 github.com/Goscord/goscord v0.0.0-20230108214234-77f64b910d0f h1:HUqBpbwUA4AHy0OrMD80aqqN+P4uzqb3pJ6driYLEgI=
 github.com/Goscord/goscord v0.0.0-20230108214234-77f64b910d0f/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
+github.com/Goscord/goscord v0.0.0-20230108220724-f87aace4ac4d h1:4iwQzYHa9SlLsbuaexG0MVRK3pRdJKmRy50s5+1t8D0=
+github.com/Goscord/goscord v0.0.0-20230108220724-f87aace4ac4d/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef h1:2JGTg6JapxP9/R33ZaagQtAM4EkkSYnIAlOG5EI8gkM=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef/go.mod h1:JS7hed4L1fj0hXcyEejnW57/7LCetXggd+vwrRnYeII=
 github.com/goccy/go-json v0.10.0 h1:mXKd9Qw4NuzShiRlOXKews24ufknHO7gx30lsDyokKA=
