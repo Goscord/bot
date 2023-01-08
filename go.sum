@@ -28,8 +28,14 @@ github.com/Goscord/goscord v0.0.0-20220826105128-d17e81ad3c80 h1:kE9VGNEDQhwOKgH
 github.com/Goscord/goscord v0.0.0-20220826105128-d17e81ad3c80/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
 github.com/Goscord/goscord v0.0.0-20220826113633-6ebc522e133f h1:Nb6ccR/S+KWpxEMdh6BSbENr3llVl1ueVNXZBgBWXTE=
 github.com/Goscord/goscord v0.0.0-20220826113633-6ebc522e133f/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
+github.com/Goscord/goscord v0.0.0-20230108135648-9d12bd00b0a1 h1:Ab0SmNpOm0y3Kz+INo3coirlHMXJK+Rsnx9MFjP9PNc=
+github.com/Goscord/goscord v0.0.0-20230108135648-9d12bd00b0a1/go.mod h1:E8w53GnIKy3BPTESZuZOXnFr60ftJjWb36b2fj1xvjQ=
+github.com/Goscord/goscord v0.0.0-20230108210506-a93407fe5c31 h1:u2T6nKLXKMOpLXX5rbWUdPLw5GRVdewPYVNELfPWTPk=
+github.com/Goscord/goscord v0.0.0-20230108210506-a93407fe5c31/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef h1:2JGTg6JapxP9/R33ZaagQtAM4EkkSYnIAlOG5EI8gkM=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef/go.mod h1:JS7hed4L1fj0hXcyEejnW57/7LCetXggd+vwrRnYeII=
+github.com/goccy/go-json v0.10.0 h1:mXKd9Qw4NuzShiRlOXKews24ufknHO7gx30lsDyokKA=
+github.com/goccy/go-json v0.10.0/go.mod h1:6MelG93GURQebXPDq3khkgXZkazVtN9CRI+MGFi0w8I=
 github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=
 github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/joho/godotenv v1.4.0 h1:3l4+N6zfMWnkbPEXKng2o2/MR5mSwTrBih4ZEkkz1lg=
