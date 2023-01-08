@@ -7,21 +7,17 @@ import (
 	"os"
 
 	"github.com/Goscord/Bot/command"
-	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/Bot/event"
 )
 
 var (
 	client *gateway.Session
-	Config *config.Config
 	cmdMgr *command.CommandManager
 )
 
 func main() {
 	// Load envionment variables :
 	godotenv.Load()
-
-	Config, _ = config.GetConfig()
 
 	// Create client instance :
 	client = goscord.New(&gateway.Options{
@@ -30,12 +26,12 @@ func main() {
 	})
 
 	// Load command manager :
-	cmdMgr = command.NewCommandManager(client, Config)
+	cmdMgr = command.NewCommandManager(client)
 
 	// Load events :
-	_ = client.On("ready", event.OnReady(client, Config, cmdMgr))
-	_ = client.On("interactionCreate", cmdMgr.Handler(client, Config))
-	_ = client.On("guildMemberAdd", event.OnGuildMemberAdd(client, Config))
+	_ = client.On("ready", event.OnReady(client, cmdMgr))
+	_ = client.On("interactionCreate", cmdMgr.Handler(client))
+	_ = client.On("guildMemberAdd", event.OnGuildMemberAdd(client))
 
 	// Login client :
 	if err := client.Login(); err != nil {

@@ -6,10 +6,9 @@ import (
 	"log"
 
 	"github.com/Goscord/Bot/command"
-	"github.com/Goscord/Bot/config"
 )
 
-func OnReady(client *gateway.Session, config *config.Config, cmdMgr *command.CommandManager) func() {
+func OnReady(client *gateway.Session, cmdMgr *command.CommandManager) func() {
 	return func() {
 		log.Printf("Logged in as %s\n", client.Me().Tag())
 

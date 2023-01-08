@@ -1,21 +1,18 @@
 package command
 
 import (
-	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/goscord/goscord/discord"
 	"github.com/Goscord/goscord/goscord/gateway"
 )
 
 type CommandManager struct {
 	client   *gateway.Session
-	config   *config.Config
 	commands map[string]Command
 }
 
-func NewCommandManager(client *gateway.Session, config *config.Config) *CommandManager {
+func NewCommandManager(client *gateway.Session) *CommandManager {
 	return &CommandManager{
 		client:   client,
-		config:   config,
 		commands: make(map[string]Command),
 	}
 }
@@ -28,7 +25,7 @@ func (mgr *CommandManager) Init() {
 	mgr.Register(new(ServerInfoCommand))
 }
 
-func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Config) func(*discord.Interaction) {
+func (mgr *CommandManager) Handler(client *gateway.Session) func(*discord.Interaction) {
 	return func(interaction *discord.Interaction) {
 		if interaction.Type != discord.InteractionTypeApplicationCommand {
 			return
@@ -45,7 +42,9 @@ func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Confi
 		cmd := mgr.Get(interaction.ApplicationCommandData().Name)
 
 		if cmd != nil {
-			_ = cmd.Execute(&Context{config: config, client: client, interaction: interaction, cmdMgr: mgr})
+			client.Interaction.CreateResponse(interaction.Id, interaction.Token, nil) // defer interaction
+
+			_ = cmd.Execute(&Context{client: client, interaction: interaction, cmdMgr: mgr})
 		}
 	}
 }

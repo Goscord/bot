@@ -5,26 +5,25 @@ import (
 	"github.com/Goscord/goscord/goscord/discord"
 	"github.com/Goscord/goscord/goscord/gateway"
 	"log"
-
-	"github.com/Goscord/Bot/config"
+	"os"
 )
 
-func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(member *discord.GuildMember) {
+func OnGuildMemberAdd(client *gateway.Session) func(member *discord.GuildMember) {
 	return func(member *discord.GuildMember) {
-		if config.WelcomeChannelId != "" {
-			if channel, bruh := client.State().Channel(config.WelcomeChannelId); bruh == nil {
+		if os.Getenv("WELCOME_CHANNEL_ID") != "" {
+			if channel, bruh := client.State().Channel(os.Getenv("WELCOME_CHANNEL_ID")); bruh == nil {
 				client.Channel.SendMessage(channel.Id, fmt.Sprintf("Welcome <@%s> to the server !", member.User.Id))
 			} else {
-				log.Println("Cannot find channel with id :", config.WelcomeChannelId)
+				log.Println("Cannot find channel with id :", os.Getenv("WELCOME_CHANNEL_ID"))
 			}
 		}
 
-		if config.MemberRoleId != "" {
+		if os.Getenv("MEMBER_ROLE_ID") != "" {
 			// ToDo : Check if the role is in the guild state
 
-			log.Printf("Adding role %s to user %s\n", config.MemberRoleId, member.User.Tag())
+			log.Printf("Adding role %s to user %s\n", os.Getenv("MEMBER_ROLE_ID"), member.User.Tag())
 
-			client.Guild.AddMemberRole(member.GuildId, member.User.Id, config.MemberRoleId)
+			client.Guild.AddMemberRole(member.GuildId, member.User.Id, os.Getenv("MEMBER_ROLE_ID"))
 		}
 	}
 }
