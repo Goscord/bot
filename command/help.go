@@ -2,6 +2,7 @@ package command
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/Goscord/goscord/goscord/discord"
 	"github.com/Goscord/goscord/goscord/discord/embed"
@@ -37,7 +38,8 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 	e.SetColor(embed.Green)
 
-	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}})
+	_, err := ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}})
+	log.Println(err)
 
 	return true
 }

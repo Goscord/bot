@@ -2,6 +2,8 @@ package command
 
 import (
 	"fmt"
+	"log"
+
 	"github.com/Goscord/goscord/goscord/discord"
 )
 
@@ -24,7 +26,7 @@ func (c *PingCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *PingCommand) Execute(ctx *Context) bool {
-	ctx.client.Interaction.CreateFollowupMessage(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Content: fmt.Sprintf("Pong! 🏓 (%dms)", ctx.client.Latency().Milliseconds()), Flags: discord.MessageFlagEphemeral})
-
+	_, err := ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Content: fmt.Sprintf("Pong! 🏓 (%dms)", ctx.client.Latency().Milliseconds()), Flags: discord.MessageFlagEphemeral})
+	log.Println(err)
 	return true
 }
