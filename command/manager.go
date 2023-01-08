@@ -2,8 +2,8 @@ package command
 
 import (
 	"github.com/Goscord/Bot/config"
-	"github.com/Goscord/goscord/discord"
-	"github.com/Goscord/goscord/gateway"
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/gateway"
 )
 
 type CommandManager struct {
@@ -30,6 +30,10 @@ func (mgr *CommandManager) Init() {
 
 func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Config) func(*discord.Interaction) {
 	return func(interaction *discord.Interaction) {
+		if interaction.Type != discord.InteractionTypeApplicationCommand {
+			return
+		}
+
 		if interaction.Member == nil {
 			return
 		}
@@ -38,7 +42,7 @@ func (mgr *CommandManager) Handler(client *gateway.Session, config *config.Confi
 			return
 		}
 
-		cmd := mgr.Get(interaction.Data.Name)
+		cmd := mgr.Get(interaction.ApplicationCommandData().Name)
 
 		if cmd != nil {
 			_ = cmd.Execute(&Context{config: config, client: client, interaction: interaction, cmdMgr: mgr})

@@ -2,8 +2,7 @@ package command
 
 import (
 	"fmt"
-
-	"github.com/Goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/discord"
 )
 
 type PingCommand struct{}

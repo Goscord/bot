@@ -2,8 +2,8 @@ package command
 
 import (
 	"github.com/Goscord/Bot/config"
-	"github.com/Goscord/goscord/discord"
-	"github.com/Goscord/goscord/gateway"
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/gateway"
 )
 
 type Context struct {

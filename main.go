@@ -1,14 +1,14 @@
 package main
 
 import (
+	"github.com/Goscord/goscord/goscord"
+	"github.com/Goscord/goscord/goscord/gateway"
+	"github.com/joho/godotenv"
 	"os"
 
 	"github.com/Goscord/Bot/command"
 	"github.com/Goscord/Bot/config"
 	"github.com/Goscord/Bot/event"
-	"github.com/Goscord/goscord"
-	"github.com/Goscord/goscord/gateway"
-	"github.com/joho/godotenv"
 )
 
 var (

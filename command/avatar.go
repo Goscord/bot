@@ -1,8 +1,8 @@
 package command
 
 import (
-	"github.com/Goscord/goscord/discord"
-	"github.com/Goscord/goscord/discord/embed"
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/discord/embed"
 )
 
 type AvatarCommand struct{}

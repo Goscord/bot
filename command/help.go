@@ -2,9 +2,8 @@ package command
 
 import (
 	"fmt"
-
-	"github.com/Goscord/goscord/discord"
-	"github.com/Goscord/goscord/discord/embed"
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/discord/embed"
 )
 
 type HelpCommand struct{}

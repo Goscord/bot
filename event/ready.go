@@ -1,12 +1,12 @@
 package event
 
 import (
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/gateway"
 	"log"
 
 	"github.com/Goscord/Bot/command"
 	"github.com/Goscord/Bot/config"
-	"github.com/Goscord/goscord/discord"
-	"github.com/Goscord/goscord/gateway"
 )
 
 func OnReady(client *gateway.Session, config *config.Config, cmdMgr *command.CommandManager) func() {

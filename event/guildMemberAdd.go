@@ -2,11 +2,11 @@ package event
 
 import (
 	"fmt"
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/gateway"
 	"log"
 
 	"github.com/Goscord/Bot/config"
-	"github.com/Goscord/goscord/discord"
-	"github.com/Goscord/goscord/gateway"
 )
 
 func OnGuildMemberAdd(client *gateway.Session, config *config.Config) func(member *discord.GuildMember) {
