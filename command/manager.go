@@ -42,7 +42,7 @@ func (mgr *CommandManager) Handler(client *gateway.Session) func(*discord.Intera
 		cmd := mgr.Get(interaction.ApplicationCommandData().Name)
 
 		if cmd != nil {
-			client.Interaction.CreateResponse(interaction.Id, interaction.Token, nil) // defer interaction
+			client.Interaction.DeferResponse(interaction.Id, interaction.Token, true)
 
 			_ = cmd.Execute(&Context{client: client, interaction: interaction, cmdMgr: mgr})
 		}

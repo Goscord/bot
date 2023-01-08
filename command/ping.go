@@ -25,7 +25,7 @@ func (c *PingCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *PingCommand) Execute(ctx *Context) bool {
-	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Content: fmt.Sprintf("Pong! 🏓 (%dms)", ctx.client.Latency().Milliseconds()), Flags: discord.MessageFlagEphemeral})
+	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Content: fmt.Sprintf("Pong! 🏓 (%dms)", ctx.client.Latency().Milliseconds())})
 
 	return true
 }
