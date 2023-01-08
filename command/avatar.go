@@ -30,7 +30,7 @@ func (c *AvatarCommand) Execute(ctx *Context) bool {
 	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
 	e.SetColor(embed.Green)
 
-	ctx.client.Interaction.CreateFollowupMessage(ctx.interaction.Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
+	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
 
 	return true
 }

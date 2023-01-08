@@ -1,9 +1,10 @@
 package command
 
 import (
+	"strings"
+
 	"github.com/Goscord/goscord/goscord/discord"
 	"github.com/Goscord/goscord/goscord/discord/embed"
-	"strings"
 )
 
 type EmbedCommand struct{}
@@ -52,7 +53,7 @@ func (c *EmbedCommand) Execute(ctx *Context) bool {
 		e.AddField(title, strings.ReplaceAll(description, "-br", "\n"), false)
 		e.SetColor(embed.Green)
 
-		ctx.client.Interaction.CreateFollowupMessage(ctx.interaction.Id, ctx.interaction.Token, e.Embed())
+		ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, e.Embed())
 	}
 
 	return true
