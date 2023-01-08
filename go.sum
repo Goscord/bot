@@ -40,6 +40,14 @@ github.com/Goscord/goscord v0.0.0-20230108222044-9104ff1b3427 h1:l2Z4Pf+dzaWFmlx
 github.com/Goscord/goscord v0.0.0-20230108222044-9104ff1b3427/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
 github.com/Goscord/goscord v0.0.0-20230108223235-437c1910be20 h1:jry87xgxOGQHxu/c+dUkar5RhjjfAWHNj21DIcDCLpE=
 github.com/Goscord/goscord v0.0.0-20230108223235-437c1910be20/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
+github.com/Goscord/goscord v0.0.0-20230108223957-3d7d922657f9 h1:mSy3ok7MprkgdKsHJlsW1pTsuFp+Ug0/fMyMe9HcA/w=
+github.com/Goscord/goscord v0.0.0-20230108223957-3d7d922657f9/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
+github.com/Goscord/goscord v0.0.0-20230108224133-4a5346fb1d35 h1:SApXQPRPhjofjfR178p6aRbRV4cNVdNH4+8SpHNSFzk=
+github.com/Goscord/goscord v0.0.0-20230108224133-4a5346fb1d35/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
+github.com/Goscord/goscord v0.0.0-20230108224222-2b16d72753c5 h1:x4C/3D1l/qDaYxL8ldw7kDWFnCzvtqnsDJ6yP9PUr50=
+github.com/Goscord/goscord v0.0.0-20230108224222-2b16d72753c5/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
+github.com/Goscord/goscord v0.0.0-20230108225343-3521cf0a7645 h1:viLZQlsIgvlIVfkuwH64UQF0bWWJFsM6p2oKmKo6hkI=
+github.com/Goscord/goscord v0.0.0-20230108225343-3521cf0a7645/go.mod h1:DqKQTJIeNcDAIeVcBYPYJM6AvMKrWVrU/wP+NGn4Gec=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef h1:2JGTg6JapxP9/R33ZaagQtAM4EkkSYnIAlOG5EI8gkM=
 github.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef/go.mod h1:JS7hed4L1fj0hXcyEejnW57/7LCetXggd+vwrRnYeII=
 github.com/goccy/go-json v0.10.0 h1:mXKd9Qw4NuzShiRlOXKews24ufknHO7gx30lsDyokKA=

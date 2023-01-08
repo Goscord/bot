@@ -33,7 +33,7 @@ func (c *ServerInfoCommand) Execute(ctx *Context) bool {
 		e.SetColor(embed.Red)
 		e.SetDescription("Could not fetch server informations!")
 
-		ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
+		ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
 
 		return false
 	}
@@ -44,7 +44,7 @@ func (c *ServerInfoCommand) Execute(ctx *Context) bool {
 	e.AddField("Server ID", guild.Id, false)
 	e.AddField("Members count", fmt.Sprintf("%d", guild.MemberCount), false)
 
-	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.InteractionCallbackMessage{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
+	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}, Flags: discord.MessageFlagEphemeral})
 
 	return true
 }
