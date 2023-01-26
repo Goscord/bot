@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/Goscord/goscord/goscord/discord/embed"
 	"github.com/Goscord/goscord/goscord/gateway"
+	"go.uber.org/atomic"
 	"sync"
-	"sync/atomic"
 )
 
 type Player struct {
