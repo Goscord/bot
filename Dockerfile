@@ -2,7 +2,7 @@ FROM golang:1.18-alpine
 
 WORKDIR /app
 
-RUN apk add ffmpeg opus
+RUN apk add build-base ffmpeg opus
 
 COPY go.mod go.sum ./
 RUN go mod download && go mod verify
