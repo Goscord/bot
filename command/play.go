@@ -88,7 +88,7 @@ func (c *PlayCommand) Execute(ctx *Context) bool {
 	gPlayer.AddTrack(track)
 
 	e.SetColor(embed.Green)
-	e.SetDescription(fmt.Sprintf("Added **%s** to the queue!", video.Title))
+	e.SetDescription(fmt.Sprintf("Added **%s** by %s to the queue!", video.Title, video.Author))
 	e.SetThumbnail(video.Thumbnails[0].URL)
 	e.SetFooter(fmt.Sprintf("Requested by %s", ctx.Interaction.Member.User.Username), ctx.Interaction.Member.User.AvatarURL())
 
