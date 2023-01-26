@@ -6,9 +6,9 @@ import (
 )
 
 type Context struct {
-	cmdMgr      *CommandManager
-	client      *gateway.Session
-	interaction *discord.Interaction
+	CmdMgr      *CommandManager
+	Client      *gateway.Session
+	Interaction *discord.Interaction
 }
 
 type Command interface {

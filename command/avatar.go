@@ -26,11 +26,11 @@ func (c *AvatarCommand) Options() []*discord.ApplicationCommandOption {
 func (c *AvatarCommand) Execute(ctx *Context) bool {
 	e := embed.NewEmbedBuilder()
 
-	e.SetImage(ctx.interaction.Member.User.AvatarURL())
-	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
+	e.SetImage(ctx.Interaction.Member.User.AvatarURL())
+	e.SetFooter(ctx.Client.Me().Username, ctx.Client.Me().AvatarURL())
 	e.SetColor(embed.Green)
 
-	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+	ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
 
 	return true
 }

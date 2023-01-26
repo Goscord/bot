@@ -30,14 +30,14 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 
 	e.SetTitle(":books: | Help page")
 
-	for _, cmd := range ctx.cmdMgr.commands {
+	for _, cmd := range ctx.CmdMgr.commands {
 		e.AddField(fmt.Sprintf("/%s", cmd.Name()), cmd.Description(), false)
 	}
 
-	e.SetFooter(ctx.client.Me().Username, ctx.client.Me().AvatarURL())
+	e.SetFooter(ctx.Client.Me().Username, ctx.Client.Me().AvatarURL())
 	e.SetColor(embed.Green)
 
-	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+	ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
 
 	return true
 }

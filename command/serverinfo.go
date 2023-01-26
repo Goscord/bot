@@ -28,12 +28,12 @@ func (c *ServerInfoCommand) Options() []*discord.ApplicationCommandOption {
 func (c *ServerInfoCommand) Execute(ctx *Context) bool {
 	e := embed.NewEmbedBuilder()
 
-	guild, err := ctx.client.State().Guild(ctx.interaction.GuildId)
+	guild, err := ctx.Client.State().Guild(ctx.Interaction.GuildId)
 	if err != nil {
 		e.SetColor(embed.Red)
 		e.SetDescription("Could not fetch server informations!")
 
-		ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+		ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
 
 		return false
 	}
@@ -44,7 +44,7 @@ func (c *ServerInfoCommand) Execute(ctx *Context) bool {
 	e.AddField("Server ID", guild.Id, false)
 	e.AddField("Members count", fmt.Sprintf("%d", guild.MemberCount), false)
 
-	ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+	ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
 
 	return true
 }

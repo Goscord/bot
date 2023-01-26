@@ -41,19 +41,19 @@ func (c *EmbedCommand) Options() []*discord.ApplicationCommandOption {
 func (c *EmbedCommand) Execute(ctx *Context) bool {
 	e := embed.NewEmbedBuilder()
 
-	if !ctx.interaction.Member.Permissions.Has(discord.BitwisePermissionFlagManageMessages) {
+	if !ctx.Interaction.Member.Permissions.Has(discord.BitwisePermissionFlagManageMessages) {
 		e.SetDescription("You do not have permission to run this command")
 		e.SetColor(embed.Red)
 
-		ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+		ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
 	} else {
-		title := ctx.interaction.ApplicationCommandData().Options[0].String()
-		description := ctx.interaction.ApplicationCommandData().Options[1].String()
+		title := ctx.Interaction.ApplicationCommandData().Options[0].String()
+		description := ctx.Interaction.ApplicationCommandData().Options[1].String()
 
 		e.AddField(title, strings.ReplaceAll(description, "-br", "\n"), false)
 		e.SetColor(embed.Green)
 
-		ctx.client.Interaction.CreateFollowupMessage(ctx.client.Me().Id, ctx.interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+		ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
 	}
 
 	return true

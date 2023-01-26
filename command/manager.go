@@ -1,6 +1,7 @@
 package command
 
 import (
+	"fmt"
 	"github.com/Goscord/goscord/goscord/discord"
 	"github.com/Goscord/goscord/goscord/gateway"
 )
@@ -19,6 +20,8 @@ func NewCommandManager(client *gateway.Session) *CommandManager {
 
 func (mgr *CommandManager) Init() {
 	mgr.Register(new(HelpCommand))
+	mgr.Register(new(PlayCommand))
+	mgr.Register(new(StopCommand))
 	mgr.Register(new(AvatarCommand))
 	mgr.Register(new(PingCommand))
 	mgr.Register(new(EmbedCommand))
@@ -42,9 +45,9 @@ func (mgr *CommandManager) Handler(client *gateway.Session) func(*discord.Intera
 		cmd := mgr.Get(interaction.ApplicationCommandData().Name)
 
 		if cmd != nil {
-			client.Interaction.DeferResponse(interaction.Id, interaction.Token, true)
+			client.Interaction.DeferResponse(interaction.Id, interaction.Token, false)
 
-			_ = cmd.Execute(&Context{client: client, interaction: interaction, cmdMgr: mgr})
+			_ = cmd.Execute(&Context{Client: client, Interaction: interaction, CmdMgr: mgr})
 		}
 	}
 }
@@ -65,7 +68,9 @@ func (mgr *CommandManager) Register(cmd Command) {
 		Options:     cmd.Options(),
 	}
 
-	mgr.client.Application.RegisterCommand(mgr.client.Me().Id, "", appCmd)
+	if _, err := mgr.client.Application.RegisterCommand(mgr.client.Me().Id, "", appCmd); err != nil {
+		fmt.Println(err)
+	}
 
 	mgr.commands[cmd.Name()] = cmd
 }

@@ -7,10 +7,15 @@
     <list default="true" id="919be8fc-4812-4ff8-8284-55dbd8839452" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/command/avatar.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/avatar.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/command.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/command.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/command/embed.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/embed.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/command/help.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/help.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/ping.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/serverinfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/serverinfo.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +52,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -61,6 +67,12 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mathis\Documents\Programmation\GitHub\Bot\command" />
+      <recent name="C:\Users\Mathis\Documents\Programmation\GitHub\Bot\command\music" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Bot" />
