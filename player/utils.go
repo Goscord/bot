@@ -3,11 +3,12 @@ package player
 import (
 	"bufio"
 	"encoding/binary"
-	"github.com/Goscord/goscord/goscord/gateway"
 	"io"
-	"layeh.com/gopus"
 	"os/exec"
 	"strconv"
+
+	"github.com/Goscord/goscord/goscord/gateway"
+	"layeh.com/gopus"
 )
 
 const (

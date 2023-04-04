@@ -2,9 +2,9 @@ package command
 
 import (
 	"fmt"
+	"github.com/Goscord/goscord/goscord/discord/builder"
 
 	"github.com/Goscord/goscord/goscord/discord"
-	"github.com/Goscord/goscord/goscord/discord/embed"
 )
 
 type ServerInfoCommand struct{}
@@ -26,25 +26,25 @@ func (c *ServerInfoCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *ServerInfoCommand) Execute(ctx *Context) bool {
-	e := embed.NewEmbedBuilder()
+	e := builder.NewEmbedBuilder()
 
 	guild, err := ctx.Client.State().Guild(ctx.Interaction.GuildId)
 	if err != nil {
-		e.SetColor(embed.Red)
+		e.SetColor(discord.EmbedRed)
 		e.SetDescription("Could not fetch server informations!")
 
-		ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+		_, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
 
 		return false
 	}
 
-	e.SetColor(embed.Green)
+	e.SetColor(discord.EmbedGreen)
 	e.SetTitle(":books: | Server infos")
 	e.AddField("Server name", guild.Name, false)
 	e.AddField("Server ID", guild.Id, false)
 	e.AddField("Members count", fmt.Sprintf("%d", guild.MemberCount), false)
 
-	ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+	_, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
 
 	return true
 }

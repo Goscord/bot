@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/Goscord/Bot/player"
 	"github.com/Goscord/goscord/goscord/discord"
-	"github.com/Goscord/goscord/goscord/discord/embed"
+	"github.com/Goscord/goscord/goscord/discord/builder"
 	"github.com/kkdai/youtube/v2"
 )
 
@@ -35,11 +35,11 @@ func (c *PlayCommand) Options() []*discord.ApplicationCommandOption {
 
 func (c *PlayCommand) Execute(ctx *Context) bool {
 	var m *discord.Message
-	e := embed.NewEmbedBuilder()
+	e := builder.NewEmbedBuilder()
 
 	vt, err := ctx.Client.State().VoiceState(ctx.Interaction.GuildId, ctx.Interaction.Member.User.Id)
 	if err != nil {
-		e.SetColor(embed.Red)
+		e.SetColor(discord.EmbedRed)
 		e.SetDescription("⚠️ | You are not in a voice channel!")
 
 		m, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
@@ -53,13 +53,13 @@ func (c *PlayCommand) Execute(ctx *Context) bool {
 	}
 
 	if gPlayer.ChannelId() != vt.ChannelId {
-		e.SetColor(embed.Red)
+		e.SetColor(discord.EmbedRed)
 		e.SetDescription("⚠️ | You are not in the same voice channel as the bot!")
 		m, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
 		return true
 	}
 
-	e.SetColor(embed.Yellow)
+	e.SetColor(discord.EmbedYellow)
 	e.SetDescription("⏳ | Searching for your query...")
 	m, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
 
@@ -67,10 +67,10 @@ func (c *PlayCommand) Execute(ctx *Context) bool {
 
 	video, err := ytb.GetVideo(ctx.Interaction.ApplicationCommandData().Options[0].String())
 	if err != nil {
-		e.SetColor(embed.Red)
+		e.SetColor(discord.EmbedRed)
 		e.SetDescription("❌ | Video not found!")
 
-		ctx.Client.Interaction.EditFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, m.Id, e.Embed())
+		_, _ = ctx.Client.Interaction.EditFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, m.Id, e.Embed())
 
 		return true
 	}
@@ -87,15 +87,17 @@ func (c *PlayCommand) Execute(ctx *Context) bool {
 
 	gPlayer.AddTrack(track)
 
-	e.SetColor(embed.Green)
+	e.SetColor(discord.EmbedGreen)
 	e.SetDescription(fmt.Sprintf("Added **%s** by %s to the queue!", video.Title, video.Author))
 	e.SetThumbnail(video.Thumbnails[0].URL)
 	e.SetFooter(fmt.Sprintf("Requested by %s", ctx.Interaction.Member.User.Username), ctx.Interaction.Member.User.AvatarURL())
 
-	ctx.Client.Interaction.EditFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, m.Id, e.Embed())
+	_, _ = ctx.Client.Interaction.EditFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, m.Id, e.Embed())
 
 	if !gPlayer.IsPlaying() {
-		go gPlayer.Play()
+		go func() {
+			_ = gPlayer.Play()
+		}()
 	}
 
 	return true

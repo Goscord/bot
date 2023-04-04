@@ -2,9 +2,9 @@ package command
 
 import (
 	"fmt"
+	"github.com/Goscord/goscord/goscord/discord/builder"
 
 	"github.com/Goscord/goscord/goscord/discord"
-	"github.com/Goscord/goscord/goscord/discord/embed"
 )
 
 type HelpCommand struct{}
@@ -26,7 +26,7 @@ func (c *HelpCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *HelpCommand) Execute(ctx *Context) bool {
-	e := embed.NewEmbedBuilder()
+	e := builder.NewEmbedBuilder()
 
 	e.SetTitle(":books: | Help page")
 
@@ -35,9 +35,9 @@ func (c *HelpCommand) Execute(ctx *Context) bool {
 	}
 
 	e.SetFooter(ctx.Client.Me().Username, ctx.Client.Me().AvatarURL())
-	e.SetColor(embed.Green)
+	e.SetColor(discord.EmbedGreen)
 
-	ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+	_, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
 
 	return true
 }

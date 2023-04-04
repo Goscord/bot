@@ -1,6 +1,7 @@
 package main
 
 import (
+	event2 "github.com/Goscord/goscord/goscord/gateway/event"
 	"os"
 
 	"github.com/Goscord/goscord/goscord"
@@ -18,7 +19,7 @@ var (
 
 func main() {
 	// Load envionment variables :
-	godotenv.Load()
+	_ = godotenv.Load()
 
 	// Create client instance :
 	client = goscord.New(&gateway.Options{
@@ -30,9 +31,9 @@ func main() {
 	cmdMgr = command.NewCommandManager(client)
 
 	// Load events :
-	_ = client.On("ready", event.OnReady(client, cmdMgr))
-	_ = client.On("interactionCreate", cmdMgr.Handler(client))
-	_ = client.On("guildMemberAdd", event.OnGuildMemberAdd(client))
+	_ = client.On(event2.EventReady, event.OnReady(client, cmdMgr))
+	_ = client.On(event2.EventInteractionCreate, cmdMgr.Handler(client))
+	_ = client.On(event2.EventGuildMemberAdd, event.OnGuildMemberAdd(client))
 	// TODO: Check player status with voiceStateUpdate event
 
 	// Login client :

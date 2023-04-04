@@ -2,7 +2,7 @@ package command
 
 import (
 	"github.com/Goscord/goscord/goscord/discord"
-	"github.com/Goscord/goscord/goscord/discord/embed"
+	"github.com/Goscord/goscord/goscord/discord/builder"
 )
 
 type AvatarCommand struct{}
@@ -24,13 +24,14 @@ func (c *AvatarCommand) Options() []*discord.ApplicationCommandOption {
 }
 
 func (c *AvatarCommand) Execute(ctx *Context) bool {
-	e := embed.NewEmbedBuilder()
+	e := builder.NewEmbedBuilder()
 
+	e.SetTitle("Your avatar")
 	e.SetImage(ctx.Interaction.Member.User.AvatarURL())
 	e.SetFooter(ctx.Client.Me().Username, ctx.Client.Me().AvatarURL())
-	e.SetColor(embed.Green)
+	e.SetColor(discord.EmbedGreen)
 
-	ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, &discord.Message{Embeds: []*embed.Embed{e.Embed()}})
+	_, _ = ctx.Client.Interaction.CreateFollowupMessage(ctx.Client.Me().Id, ctx.Interaction.Token, e.Embed())
 
 	return true
 }

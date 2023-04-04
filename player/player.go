@@ -2,7 +2,8 @@ package player
 
 import (
 	"fmt"
-	"github.com/Goscord/goscord/goscord/discord/embed"
+	"github.com/Goscord/goscord/goscord/discord"
+	"github.com/Goscord/goscord/goscord/discord/builder"
 	"github.com/Goscord/goscord/goscord/gateway"
 	"go.uber.org/atomic"
 	"sync"
@@ -76,8 +77,8 @@ func (p *Player) Play() error {
 
 			p.playing.Store(true)
 
-			e := embed.NewEmbedBuilder()
-			e.SetColor(embed.Green)
+			e := builder.NewEmbedBuilder()
+			e.SetColor(discord.EmbedGreen)
 			e.SetTitle("💿 | Now playing")
 			e.SetDescription(fmt.Sprintf("**%s** by %s", track.Title, track.Author))
 			e.SetFooter(fmt.Sprintf("Requested by %s", track.Requester.Username), track.Requester.AvatarURL())
@@ -88,7 +89,7 @@ func (p *Player) Play() error {
 				p.messageId = m.Id
 				p.Unlock()
 			} else {
-				client.Channel.Edit(messageChannel, messageId, e.Embed())
+				_, _ = client.Channel.Edit(messageChannel, messageId, e.Embed())
 			}
 
 			PlayUrlOrFile(voiceConnection, track.StreamUrl, stop)
@@ -102,11 +103,11 @@ func (p *Player) Play() error {
 		messageId := p.messageId
 		p.RUnlock()
 
-		e := embed.NewEmbedBuilder()
-		e.SetColor(embed.Red)
+		e := builder.NewEmbedBuilder()
+		e.SetColor(discord.EmbedRed)
 		e.SetTitle("💿 | Queue finished!")
 		e.SetDescription("The music queue has finished playing. You can add more tracks to the queue by using the `/play` command.")
-		client.Channel.Edit(messageChannel, messageId, e.Embed())
+		_, _ = client.Channel.Edit(messageChannel, messageId, e.Embed())
 
 		p.Stop()
 	}
@@ -155,7 +156,7 @@ func (p *Player) Stop() {
 	stop := p.stop
 	p.RUnlock()
 
-	voiceConnection.Disconnect()
+	_ = voiceConnection.Disconnect()
 	stop <- true
 
 	p.playing.Store(false)

@@ -6,8 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="919be8fc-4812-4ff8-8284-55dbd8839452" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/avatar.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/avatar.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/embed.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/embed.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/help.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/help.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/ping.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/play.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/play.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/serverinfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/serverinfo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/stop.go" beforeDir="false" afterPath="$PROJECT_DIR$/command/stop.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.go" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/player/utils.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +64,11 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mathis/Documents/Programmation/GitHub/Bot&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mathis/Documents/Programmation/GitHub/CamControl-front&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -101,6 +113,16 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1675436669281</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675436669281</updated>
+      <workItem from="1675436670027" duration="153000" />
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>

@@ -45,7 +45,7 @@ func (mgr *CommandManager) Handler(client *gateway.Session) func(*discord.Intera
 		cmd := mgr.Get(interaction.ApplicationCommandData().Name)
 
 		if cmd != nil {
-			client.Interaction.DeferResponse(interaction.Id, interaction.Token, false)
+			_ = client.Interaction.DeferResponse(interaction.Id, interaction.Token, true)
 
 			_ = cmd.Execute(&Context{Client: client, Interaction: interaction, CmdMgr: mgr})
 		}
