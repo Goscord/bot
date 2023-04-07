@@ -47,7 +47,7 @@ func PlayUrlOrFile(v *gateway.VoiceConnection, filename string, stop <-chan bool
 		v.Speaking(false)
 	}()
 
-	opusEncoder, err = gopus.NewEncoder(frameRate, channels, gopus.Audio)
+	opusEncoder, err = gopus.NewEncoder(frameRate, channels, gopus.Voip)
 
 	if err != nil {
 		return
