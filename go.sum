@@ -190,6 +190,12 @@ github.com/Goscord/goscord v0.0.0-20230307015350-0884b6adf463 h1:0OeA/zgLZPCMugZ
 github.com/Goscord/goscord v0.0.0-20230307015350-0884b6adf463/go.mod h1:zvtysO5gwJU321RQW/+Ro830iIBt0hg7UqnLQ88Q5UI=
 github.com/Goscord/goscord v0.0.0-20230307153630-b65e8ac062c2 h1:70Mju9Awmziv7e+TcoTPtBKFFW3B6ydVvia2F9vjWfk=
 github.com/Goscord/goscord v0.0.0-20230307153630-b65e8ac062c2/go.mod h1:zvtysO5gwJU321RQW/+Ro830iIBt0hg7UqnLQ88Q5UI=
+github.com/Goscord/goscord v0.0.0-20230407164026-00a9a3362429 h1:4FGVjn2JjCKO+qyPSBkiRo7n+p4pHqUQRAbnMlH1s2A=
+github.com/Goscord/goscord v0.0.0-20230407164026-00a9a3362429/go.mod h1:zvtysO5gwJU321RQW/+Ro830iIBt0hg7UqnLQ88Q5UI=
+github.com/Goscord/goscord v0.0.0-20230407164739-59c85b215248 h1:n7SKJJq9lmaUUdcVppc4BkGrgBug0T7jX6XUIe1+Yv8=
+github.com/Goscord/goscord v0.0.0-20230407164739-59c85b215248/go.mod h1:zvtysO5gwJU321RQW/+Ro830iIBt0hg7UqnLQ88Q5UI=
+github.com/Goscord/goscord v0.0.0-20230407165356-b25f783a6a00 h1:drHocht0nL5iYKHRFiu7icx8R8r/A0RBJ4HtOyXLPeM=
+github.com/Goscord/goscord v0.0.0-20230407165356-b25f783a6a00/go.mod h1:zvtysO5gwJU321RQW/+Ro830iIBt0hg7UqnLQ88Q5UI=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/VividCortex/ewma v1.1.1/go.mod h1:2Tkkvm3sRDVXaiyucHiACn4cqf7DpdyLvmxzcbUokwA=
 github.com/VividCortex/ewma v1.2.0/go.mod h1:nz4BbCtbLyFDeC9SUHbtcT5644juEuWfUAUnGx7j5l4=
