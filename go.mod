@@ -3,7 +3,7 @@ module github.com/Goscord/Bot
 go 1.15
 
 require (
-	github.com/Goscord/goscord v0.0.0-20230407172820-4fdef0675df0
+	github.com/Goscord/goscord v0.0.0-20230504141347-69b84431bcd4
 	github.com/dlclark/regexp2 v1.9.0 // indirect
 	github.com/dop251/goja v0.0.0-20230402114112-623f9dda9079 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
